@@ -1,2 +1,7 @@
-A sample command-line application with an entrypoint in `bin/`, library code
-in `lib/`, and example unit test in `test/`.
+# 전투RPG게임 프로젝트
+
+## 기능능
+1 . 랜덤으로 값을 뽑아내는 기능
+2 .  파일 입출력을 처리하는 기능
+3 .  객체 지향을 활용한 전체구조 생각하기
+
