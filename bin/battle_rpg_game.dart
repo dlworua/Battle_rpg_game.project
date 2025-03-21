@@ -2,6 +2,10 @@ import "dart:io";
 import "dart:math";
 
 void main() {
+  Character character = Character('name', 1, 2, 3);
+  Monster monster = Monster('name', 1);
+  Game game = Game(character, [monster], 1);
+  game.startGame();
   //파일로부터 데이터 읽어오기
   var characterStat = File('characters.txt');
   //첫번째 파일 읽어와서 String 타입의 변수에 담기
@@ -10,8 +14,9 @@ void main() {
   List<String> stats = text.split(',');
   print(stats);
   //세번째 List<String>안에 있는 값들을 int로 바꾸기
-   List<int> stats =  stat as int
+  // List<int> stats = stat as int;
   var monsterStat = File('monsters.txt');
+  monsterStat.readAsLinesSync();
 }
 
 //캐릭터 클래스 생성
@@ -49,9 +54,31 @@ class Game {
   int count;
   Game(this.character, this.monsters, this.count);
   //게임을 시작하는 메서드
-  void startGame() {}
+  void startGame() {
+    while (character.hp > 0) {
+      print('다음 몬스터와 대결하시겠습니까? (y/n)');
+      battle();
+    }
+    //게임종료
+    //몬스터를 물리칠때마다 다음몬스터와 대결 할 것인지 선택
+  }
+
   // 전투를 진행하는 메서드
-  void battle() {}
+  void battle() {
+    print('공격은 1번, 방어는 2번');
+    //입력받기
+    String? input = stdin.readLineSync();
+    //공격하기 (1)
+    if (input == '1') {
+      print('공격');
+    }
+    //방어하기 (2)
+    if (input == '2') {
+      print('방어');
+    }
+    //
+  }
+
   //랜덤으로 몬스터를 불러오는 메서드
   Monster getRandomMonster() {
     //random값 구하기 , 0~몬스터 리스트 개수 -1까지
